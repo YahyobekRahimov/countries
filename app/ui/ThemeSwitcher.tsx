@@ -1,32 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ThemeSwitcher() {
-   const [isDark, setIsDark] = useState(getThemeInitialState());
+   const [isDark, setIsDark] = useState(false);
 
-   function getThemeInitialState() {
-      if (
-         localStorage.theme === "dark" ||
-         (!("theme" in localStorage) &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-         document.documentElement.classList.add("dark");
-         return true;
-      } else {
-         document.documentElement.classList.remove("dark");
-         return false;
-      }
-   }
-
-   const handleThemeSwitcher = () => {
-      if (isDark) {
-         document.documentElement.classList.remove("dark");
-         setIsDark(false);
-      } else {
-         document.documentElement.classList.add("dark");
+   useEffect(() => {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
          setIsDark(true);
       }
+   }, []);
+
+   useEffect(() => {
+      if (isDark) {
+         document.documentElement.classList.add("dark");
+      } else {
+         document.documentElement.classList.remove("dark");
+      }
+   }, [isDark]);
+
+   const handleThemeSwitcher = () => {
+      setIsDark(!isDark);
    };
 
    return (
