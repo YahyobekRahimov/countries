@@ -64,6 +64,7 @@ export default async function Home() {
                      return (
                         <Link
                            href={`/country/${country.cca3.toLowerCase()}`}
+                           key={index}
                         >
                            <div className="dark:bg-slate-900 flex flex-col justify-between shadow-md">
                               <div className="">
