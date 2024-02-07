@@ -1,6 +1,7 @@
 import { country } from "@/app/page";
 import Container from "@/app/ui/Container";
 import Header from "@/app/ui/Header";
+import Image from "next/image";
 import Link from "next/link";
 
 export default async function page({
@@ -33,7 +34,8 @@ export default async function page({
       skip: number;
    } = await getData();
 
-   const country: country | undefined = countries.data.find(
+   // @ts-ignore
+   const country: country = countries.data.find(
       (country) => country.cca3.toLowerCase() === params.name
    );
 
@@ -45,9 +47,9 @@ export default async function page({
                <Link href={"/"}>Back</Link>
 
                <div>
-                  <img
-                     src={country && country.flags.png}
-                     alt={country && country.flags.alt}
+                  <Image
+                     src={country.flags.png}
+                     alt={country.flags.alt}
                   />
                   <div>
                      <h1>{country && country.name.common}</h1>
