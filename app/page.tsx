@@ -68,7 +68,7 @@ export default async function Home() {
                         >
                            <div className="dark:bg-slate-900 flex flex-col justify-between shadow-md">
                               <div className="">
-                                 <Image
+                                 <img
                                     src={country.flags.png}
                                     alt={country.flags.alt}
                                     className="w-full"

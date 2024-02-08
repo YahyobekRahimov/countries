@@ -47,7 +47,7 @@ export default async function page({
                <Link href={"/"}>Back</Link>
 
                <div>
-                  <Image
+                  <img
                      src={country.flags.png}
                      alt={country.flags.alt}
                   />
